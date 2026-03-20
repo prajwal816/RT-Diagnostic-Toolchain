@@ -1,0 +1,10 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "sched_analyzer",
+    srcs = ["sched_analyzer.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/utils:logger",
+    ],
+)
