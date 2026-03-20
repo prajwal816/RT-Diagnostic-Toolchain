@@ -1,0 +1,83 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_test(
+    name = "ring_buffer_test",
+    srcs = ["ring_buffer_test.cc"],
+    deps = [
+        "//include/rtdiag",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "event_parser_test",
+    srcs = ["event_parser_test.cc"],
+    deps = [
+        "//src/tracing:event_parser",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "latency_analyzer_test",
+    srcs = ["latency_analyzer_test.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/analysis:latency_analyzer",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "histogram_test",
+    srcs = ["histogram_test.cc"],
+    deps = [
+        "//src/analysis:histogram",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "statistics_test",
+    srcs = ["statistics_test.cc"],
+    deps = [
+        "//src/analysis:statistics",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "deadline_monitor_test",
+    srcs = ["deadline_monitor_test.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/sched:sched_analyzer",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "priority_inversion_test",
+    srcs = ["priority_inversion_test.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/sched:sched_analyzer",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "integration_test",
+    srcs = ["integration_test.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/analysis:histogram",
+        "//src/analysis:latency_analyzer",
+        "//src/analysis:statistics",
+        "//src/sched:sched_analyzer",
+        "//src/tracing:event_parser",
+        "//src/tracing:trace_buffer",
+        "//src/tracing:tracer",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
