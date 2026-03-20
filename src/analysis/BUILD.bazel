@@ -1,0 +1,24 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "histogram",
+    srcs = ["histogram.cc"],
+    hdrs = ["histogram.h"],
+    deps = [],
+)
+
+cc_library(
+    name = "statistics",
+    hdrs = ["statistics.h"],
+    deps = [],
+)
+
+cc_library(
+    name = "latency_analyzer",
+    srcs = ["latency_analyzer.cc"],
+    deps = [
+        ":histogram",
+        ":statistics",
+        "//include/rtdiag",
+    ],
+)
