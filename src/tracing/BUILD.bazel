@@ -25,3 +25,13 @@ cc_library(
     hdrs = ["trace_buffer.h"],
     deps = ["//include/rtdiag"],
 )
+
+cc_library(
+    name = "tracer",
+    srcs = ["tracer.cc"],
+    deps = [
+        ":ftrace_reader",
+        "//include/rtdiag",
+        "//src/utils:logger",
+    ],
+)
