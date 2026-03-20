@@ -5,7 +5,7 @@
 namespace rtdiag {
 
 struct FtraceTracer::Impl {
-    tracing::FtraceReader reader;
+    std::unique_ptr<tracing::FtraceReader> reader;
     TraceConfig config;
     uint64_t event_count = 0;
 
@@ -13,7 +13,7 @@ struct FtraceTracer::Impl {
         : config(cfg) {
         tracing::FtraceReaderConfig rcfg;
         rcfg.buffer_capacity = cfg.ring_buffer_capacity;
-        reader = tracing::FtraceReader(rcfg);
+        reader = std::make_unique<tracing::FtraceReader>(rcfg);
     }
 };
 
