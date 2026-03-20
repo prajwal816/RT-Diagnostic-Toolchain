@@ -5,6 +5,7 @@
 
 #include "rtdiag/types.h"
 
+#include <memory>
 #include <string>
 #include <vector>
 
