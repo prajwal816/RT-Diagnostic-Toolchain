@@ -1,0 +1,11 @@
+# RT Diagnostic Toolchain Bazel Configuration
+build --cxxopt=-std=c++17
+build --host_cxxopt=-std=c++17
+build --copt=-Wall
+build --copt=-Wextra
+build --copt=-Wpedantic
+build --copt=-O2
+
+# Test configuration
+test --test_output=errors
+test --test_verbose_timeout_warnings

@@ -1,0 +1,4 @@
+# Top-level BUILD file for RT Diagnostic Toolchain
+# Exports public header-only library
+
+package(default_visibility = ["//visibility:public"])
