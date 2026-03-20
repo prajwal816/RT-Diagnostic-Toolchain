@@ -1,0 +1,25 @@
+# Bazel
+bazel-*
+.bazelrc.user
+
+# Build outputs
+*.o
+*.a
+*.so
+*.dylib
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated
+*.csv
+*.log
+trace_dump.*
