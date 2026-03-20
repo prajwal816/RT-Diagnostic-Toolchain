@@ -1,0 +1,21 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_binary(
+    name = "throughput_bench",
+    srcs = ["throughput_bench.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/utils:timestamp",
+    ],
+)
+
+cc_binary(
+    name = "latency_bench",
+    srcs = ["latency_bench.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/analysis:histogram",
+        "//src/analysis:statistics",
+        "//src/utils:timestamp",
+    ],
+)
