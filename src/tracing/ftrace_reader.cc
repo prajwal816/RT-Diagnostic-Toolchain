@@ -4,6 +4,7 @@
 #include "src/utils/timestamp.h"
 
 #include <chrono>
+#include <cmath>
 #include <cstring>
 #include <fstream>
 #include <random>

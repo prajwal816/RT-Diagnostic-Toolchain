@@ -26,41 +26,41 @@ FtraceTracer::FtraceTracer(FtraceTracer&&) noexcept = default;
 FtraceTracer& FtraceTracer::operator=(FtraceTracer&&) noexcept = default;
 
 bool FtraceTracer::Start() {
-    return impl_->reader.Start();
+    return impl_->reader->Start();
 }
 
 void FtraceTracer::Stop() {
-    impl_->reader.Stop();
+    impl_->reader->Stop();
 }
 
 bool FtraceTracer::IsRunning() const {
-    return impl_->reader.IsRunning();
+    return impl_->reader->IsRunning();
 }
 
 size_t FtraceTracer::ReadEvents(std::vector<TraceEvent>& events, size_t max_events) {
-    size_t count = impl_->reader.ReadEvents(events, max_events);
+    size_t count = impl_->reader->ReadEvents(events, max_events);
     impl_->event_count += count;
     return count;
 }
 
 void FtraceTracer::SetEventCallback(EventCallback callback) {
-    impl_->reader.SetCallback(std::move(callback));
+    impl_->reader->SetCallback(std::move(callback));
 }
 
 uint64_t FtraceTracer::EventCount() const {
-    return impl_->reader.EventCount();
+    return impl_->reader->EventCount();
 }
 
 uint64_t FtraceTracer::DroppedEvents() const {
-    return impl_->reader.DroppedEvents();
+    return impl_->reader->DroppedEvents();
 }
 
 bool FtraceTracer::IsSimulated() const {
-    return impl_->reader.IsSimulated();
+    return impl_->reader->IsSimulated();
 }
 
 void FtraceTracer::GenerateSyntheticEvents(size_t count) {
-    impl_->reader.GenerateSyntheticEvents(count);
+    impl_->reader->GenerateSyntheticEvents(count);
 }
 
 }  // namespace rtdiag

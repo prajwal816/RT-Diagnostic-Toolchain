@@ -54,9 +54,17 @@ uint64_t GetTSCFrequency();
 inline uint64_t TSCToNanos(uint64_t tsc_delta) {
     const uint64_t freq = GetTSCFrequency();
     if (freq == 0) return 0;
+#if defined(__SIZEOF_INT128__) || defined(__x86_64__)
     // Use 128-bit multiplication to avoid overflow
     return static_cast<uint64_t>(
         (static_cast<__uint128_t>(tsc_delta) * 1000000000ULL) / freq);
+#else
+    // Portable fallback: split the computation to avoid overflow
+    //   tsc_delta * 1e9 / freq ≈ (tsc_delta / freq) * 1e9 + remainder
+    uint64_t seconds = tsc_delta / freq;
+    uint64_t remainder = tsc_delta % freq;
+    return seconds * 1000000000ULL + (remainder * 1000000000ULL) / freq;
+#endif
 }
 
 /// A timestamp pair for measuring intervals.
