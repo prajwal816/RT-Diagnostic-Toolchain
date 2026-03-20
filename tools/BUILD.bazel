@@ -1,0 +1,33 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_binary(
+    name = "rt_trace",
+    srcs = ["rt_trace.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/tracing:tracer",
+        "//src/utils:logger",
+        "//src/utils:timestamp",
+    ],
+)
+
+cc_binary(
+    name = "rt_analyze",
+    srcs = ["rt_analyze.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/analysis:latency_analyzer",
+        "//src/utils:timestamp",
+    ],
+)
+
+cc_binary(
+    name = "rt_sched",
+    srcs = ["rt_sched.cc"],
+    deps = [
+        "//include/rtdiag",
+        "//src/sched:sched_analyzer",
+        "//src/tracing:tracer",
+        "//src/utils:timestamp",
+    ],
+)
