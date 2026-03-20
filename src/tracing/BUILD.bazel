@@ -1,0 +1,27 @@
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "event_parser",
+    srcs = ["event_parser.cc"],
+    hdrs = ["event_parser.h"],
+    deps = ["//include/rtdiag"],
+)
+
+cc_library(
+    name = "ftrace_reader",
+    srcs = ["ftrace_reader.cc"],
+    hdrs = ["ftrace_reader.h"],
+    deps = [
+        ":event_parser",
+        "//include/rtdiag",
+        "//src/utils:logger",
+        "//src/utils:timestamp",
+    ],
+)
+
+cc_library(
+    name = "trace_buffer",
+    srcs = ["trace_buffer.cc"],
+    hdrs = ["trace_buffer.h"],
+    deps = ["//include/rtdiag"],
+)
